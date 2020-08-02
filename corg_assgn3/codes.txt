@@ -1,0 +1,170 @@
+// ALU Control(Under construction)
+
+module alu_con(fun_7,fun_3, alu_op, alu_con);
+
+input [6:0] fun_7;
+input [2:0] fun_3;
+input [2:0] alu_op;
+output reg [4:0] alu_con;
+
+case(alu_op)
+	3'b000: assign alu_con = 5'b00000;//add
+	3'b001: begin
+			case(fun_3)
+				3'b000: assign alu_con = 5'b01010;//eq
+				3'b001: assign alu_con = 5'b01011;//neq
+				3'b100: assign alu_con = 5'b01100;//lt
+				3'b101: assign alu_con = 5'b01101;//ge
+				3'b110: assign alu_con = 5'b01110;//ltu
+				3'b111: assign alu_con = 5'b01111://geu
+			endcase
+			end
+	3'b010: assign alu_con = (fun_3 == 3'b000)?	5'b10000 : 5'b10001;	
+	3'b011: begin
+			case(fun_7)
+				7'b0000000:case(fun_3)
+							3'b000: assign alu_con = 5'b00000; //add
+							3'b001: assign alu_con = 5'b00001; //sll
+							3'b010: assign alu_con = 5'b00010; //slt
+							3'b011: assign alu_con = 5'b00011; //sltu
+							3'b100: assign alu_con = 5'b00100; //xor
+							3'b101: assign alu_con = 5'b00101; //srl
+							3'b110: assign alu_con = 5'b00110; //or
+							3'b111: assign alu_con = 5'b00111; //and
+						   endcase
+				7'b0100000:case(fun_3)
+							3'b000: assign alu_con = 5'b01000; //sub
+							3'b101: assign alu_con = 5'b01001; //sra
+						   endcase
+			endcase
+		  end
+endcase
+endmodule
+
+// Control Unit
+
+module CU(op, brnc, mem_r, mem_t_reg, alu_op, mem_w, alu_src, reg_w);
+
+ input [6:0] op;
+ output reg brnc, mem_r, mem_t_reg, mem_w, alu_src1, reg_w, alu_src2, offset_src;
+ output reg [2:0] alu_op;
+
+ case(op):
+ 	7'b0110111: assign brnc = 0;  //LUI
+ 	            assign mem_r = 0;
+ 	            assign mem_t_reg =0;
+ 	            assign alu_op = 3'b000;
+ 	            assign mem_w = 0;
+ 	            assign alu_src1 = 1;
+ 	            assign alu_src2 = 1;
+ 	            assign offset_src = 0;
+ 	            assign reg_w =1;
+ 	7'b0010111: assign brnc = 0;  //AUIPC
+ 	            assign mem_r = 0;
+ 	            assign mem_t_reg =0;
+ 	            assign alu_op = 3'b000;
+ 	            assign mem_w = 0;
+ 	            assign alu_src1 = 0;
+ 	            assign alu_src2 = 1;
+ 	            assign offset_src = 1;
+ 	            assign reg_w =1;
+ 	7'b1101111: assign brnc = 1;  //JAL
+ 	            assign mem_r = 0;
+ 	            assign mem_t_reg =0;
+ 	            assign alu_op = 3'b000;
+ 	            assign mem_w = 0;
+ 	            assign alu_src1 = 0;
+ 	            assign alu_src2 = 1;
+ 	            assign offset_src = 0;
+ 	            assign reg_w =1;
+ 	7'b1100111: assign brnc = 1;  //JALR
+ 	            assign mem_r = 0;
+ 	            assign mem_t_reg =0;
+ 	            assign alu_src1 = 0;
+ 	            assign alu_src2 = 1;
+ 	            assign offset_src = 0;
+ 	            assign mem_w = 0;
+ 	            assign alu_op = 3'b000;
+ 	            assign reg_w =1;
+ 	7'b1100011: assign brnc = 1;  //Branch
+ 	            assign mem_r = 0;
+ 	            assign mem_t_reg =0;
+ 	            assign alu_op = 3'b001;
+ 	            assign mem_w = 0;
+ 	            assign alu_src1 = 1;
+ 	            assign alu_src2 = 0;
+ 	            assign offset_src = 0;
+ 	            assign reg_w =0;
+ 	7'b0000011: assign brnc = 0;  //Load 
+ 	            assign mem_r = 1;
+ 	            assign mem_t_reg = 1;
+ 	            assign alu_op = 3'b000;
+ 	            assign mem_w = 0;
+ 	            assign alu_src1 = 1;
+ 	            assign alu_src2 = 1;
+ 	            assign reg_w =1;
+ 	            assign offset_src = 1;
+ 	7'b0100011: assign brnc = 0;  //Store 
+ 	            assign mem_r = 0;
+ 	            assign mem_t_reg = 0;
+ 	            assign alu_op = 3'b000;
+ 	            assign mem_w = 1;
+ 	            assign alu_src1 = 1;
+ 	            assign alu_src2 = 1;
+ 	            assign reg_w =0;
+ 	            assign offset_src = 1;
+ 	7'b0010011: assign brnc = 0;  //Immediate alu 
+ 	            assign mem_r = 0;
+ 	            assign mem_t_reg = 0;
+ 	            assign alu_op = 3'b011;
+ 	            assign mem_w = 0;
+ 	            assign alu_src1 = 1;
+ 	            assign alu_src2 = 1;
+ 	            assign reg_w =1;
+ 	            assign offset_src = 0;
+ 	7'b0110011: assign brnc = 0;  //Alu 
+ 	            assign mem_r = 0;
+ 	            assign mem_t_reg = 0;
+ 	            assign alu_op = 3'b011;
+ 	            assign mem_w = 0;
+ 	            assign alu_src1 = 1;
+ 	            assign alu_src2 = 0;
+ 	            assign reg_w =1;
+ 	            assign offset_src = 0;                                    
+ endcase
+ endmodule
+
+// ALU
+
+module ALU(alu_con, in1, in2, out, zero);
+
+ input [4:0] alu_con;
+ input [31:0] in1, in2;
+ output [31:0] out;
+ output [1:0] zero; 
+ 
+ assign zero = 0;
+
+ case(alu_con):
+ 	5'b00000: assign out = $signed(in1) + $signed(in2);
+ 	5'b00001: assign out = in1 << in2;
+ 	5'b00010: assign out = ($signed(in1) < $signed(in2))? in1: in2;
+ 	5'b00011: assign out = (in1 < in2)? in1: in2;
+ 	5'b00100: assign out = in1 ^ in2;
+ 	5'b00101: assign out = in1 >> in2;
+ 	5'b00110: assign out = in1 | in2;
+ 	5'b00111: assign out = in1 & in2;
+ 	5'b01000: assign out = $signed(in1) - $signed(in2);
+ 	5'b01001: assign out = $signed(in1) >> in2;
+ 	5'b01010: assign zero = ($signed(in1) == $signed(in2)) 2'b01: 2'b00;
+ 	5'b01011: assign zero = ($signed(in1) == $signed(in2)) 2'b00: 2'b01;
+ 	5'b01100: assign zero = ($signed(in1) < $signed(in2)) 2'b01: 2'b00;
+ 	5'b01101: assign zero = ($signed(in1) >= $signed(in2)) 2'b01: 2'b00;
+ 	5'b01110: assign zero = (in1 < in2) 2'b01: 2'b00;
+ 	5'b01111: assign zero = (in1 >= in2) 2'b01: 2'b00;
+ 	5'b10000: assign out = $signed(in1) + $signed(in2);
+ 	          assign zero = 2'b10;
+ 	5'b10001: assign out = $signed(in1) + $signed(in2);
+ 	          assign zero = 2'b01;          
+ endcase
+ endmodule
