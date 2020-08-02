@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="D:/Comp.Org/pipelining1 - Copy/cpu_tb_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="cpu_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="24" />
+   <wvobject fp_name="/cpu_tb/pcactual" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pcactual[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pcactual[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/branch_fail" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">branch_fail</obj_property>
+      <obj_property name="ObjectShortName">branch_fail</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/x31" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">x31[31:0]</obj_property>
+      <obj_property name="ObjectShortName">x31[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/idata" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">idata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">idata[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/invalid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">invalid</obj_property>
+      <obj_property name="ObjectShortName">invalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/readerror" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">readerror</obj_property>
+      <obj_property name="ObjectShortName">readerror</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/writeerror" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">writeerror</obj_property>
+      <obj_property name="ObjectShortName">writeerror</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/outofboundaccess" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">outofboundaccess</obj_property>
+      <obj_property name="ObjectShortName">outofboundaccess</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/override" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">override</obj_property>
+      <obj_property name="ObjectShortName">override</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/dut24/readerror" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">readerror</obj_property>
+      <obj_property name="ObjectShortName">readerror</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/dut24/override" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">override</obj_property>
+      <obj_property name="ObjectShortName">override</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/dut24/writeerror" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">writeerror</obj_property>
+      <obj_property name="ObjectShortName">writeerror</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/dut24/outofboundaccess" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">outofboundaccess</obj_property>
+      <obj_property name="ObjectShortName">outofboundaccess</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/dut24/invalid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">invalid</obj_property>
+      <obj_property name="ObjectShortName">invalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/dut24/pc" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/dut24/state" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">state[1:0]</obj_property>
+      <obj_property name="ObjectShortName">state[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/dut24/validitymux" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">validitymux</obj_property>
+      <obj_property name="ObjectShortName">validitymux</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/dut24/pcpump" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">pcpump</obj_property>
+      <obj_property name="ObjectShortName">pcpump</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/dut24/pcstored" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pcstored[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pcstored[31:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/dut24/read" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">read</obj_property>
+      <obj_property name="ObjectShortName">read</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/dut24/write" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">write</obj_property>
+      <obj_property name="ObjectShortName">write</obj_property>
+   </wvobject>
+   <wvobject fp_name="/cpu_tb/uut/dut24/pclock" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">pclock</obj_property>
+      <obj_property name="ObjectShortName">pclock</obj_property>
+   </wvobject>
+</wave_config>
